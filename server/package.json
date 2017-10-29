@@ -7,11 +7,14 @@
     "start": "./node_modules/.bin/nodemon src/app.js --exec 'yarn lint && node'",
     "lint": "./node_modules/.bin/eslint **/*.js"
   },
-    "dependencies": {
+  "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "morgan": "^1.9.0"
+    "joi": "^13.0.1",
+    "morgan": "^1.9.0",
+    "sequelize": "^4.19.0",
+    "sqlite": "^2.8.0"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
