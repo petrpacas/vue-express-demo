@@ -3,13 +3,13 @@
     <v-flex xs6 offset-xs3>
       <v-card>
           <v-toolbar flat dark class="blue-grey">
-            <v-toolbar-title>Register</v-toolbar-title>
+            <v-toolbar-title>Login</v-toolbar-title>
           </v-toolbar>
-          <form name="tab-tracker-register" class="pa-4 text-xs-center">
+          <form name="tab-tracker-login" class="pa-4 text-xs-center">
             <v-text-field label="Email" v-model="email" />
             <v-text-field label="Password" type="password" v-model="password" />
             <div class="errors" v-html="error"></div>
-            <v-btn dark class="blue-grey" @click="register">Register</v-btn>
+            <v-btn dark class="blue-grey" @click="login">Login</v-btn>
           </form>
       </v-card>
     </v-flex>
@@ -28,9 +28,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
