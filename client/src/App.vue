@@ -21,4 +21,8 @@ export default {
 </script>
 
 <style>
+main {
+  padding-top: 64px;
+  z-index: 1;
+}
 </style>
