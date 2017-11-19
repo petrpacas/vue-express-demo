@@ -13,13 +13,37 @@ module.exports = {
       })
     }
   },
-  async create (req, res) {
+  async show (req, res) {
+    try {
+      const song = await Song.findById(req.params.songId)
+      res.send(song)
+    } catch (err) {
+      res.status(400).send({
+        error: 'An error has occured trying to fetch the song.'
+      })
+    }
+  },
+  async post (req, res) {
     try {
       const song = await Song.create(req.body)
       res.send(song)
     } catch (err) {
       res.status(400).send({
         error: 'An error has occured trying to create the song.'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(400).send({
+        error: 'An error has occured trying to update the song.'
       })
     }
   }

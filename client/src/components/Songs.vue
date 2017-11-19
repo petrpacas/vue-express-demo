@@ -4,7 +4,7 @@
       <panel title="Songs">
         <v-btn
           slot="action"
-          @click="navigateTo({name: 'songs-create'})"
+          @click="navigateTo({name: 'song-create'})"
           class="white"
           light fab absolute right center small light>
           <v-icon>add</v-icon>
@@ -16,7 +16,7 @@
               <div class="song-artist">{{song.artist}}</div>
               <div class="song-genre">{{song.genre}}</div>
               <v-btn dark class="blue-grey"
-                @click="navigateTo({name: 'song', params: {songId: song.id}})">View more</v-btn>
+                @click="navigateTo({name: 'song', params: {songId: song.id}})">View More</v-btn>
             </v-flex>
             <v-flex xs6 class="ml-2">
               <img class="album-image" :src="song.albumImageUrl">

@@ -15,7 +15,7 @@
         <v-text-field multi-line label="Lyrics" v-model="song.lyrics" required :rules="[required]" />
         <v-text-field multi-line label="Tab" v-model="song.tab" required :rules="[required]" />
         <div class="errors" v-html="error"></div>
-        <v-btn dark class="blue-grey" @click="create">Create Song</v-btn>
+        <v-btn dark class="blue-grey" @click="save">Save</v-btn>
       </panel>
     </v-flex>
   </v-layout>
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods: {
-    async create () {
+    async save () {
       this.error = null
       const fieldsFilledIn = Object
         .keys(this.song)
@@ -52,13 +52,17 @@ export default {
         this.error = 'Please fill in all the required fields.'
         return
       }
-
-      try {
-        await SongsService.post(this.song)
-        this.$router.push({name: 'songs'})
-      } catch (err) {
-        console.log(err)
-      }
+      await SongsService.put(this.song)
+      const songId = this.$store.state.route.params.songId
+      this.$router.push({name: 'song', params: {songId: songId}})
+    }
+  },
+  async mounted () {
+    try {
+      const songId = this.$store.state.route.params.songId
+      this.song = (await SongsService.show(songId)).data
+    } catch (err) {
+      console.log(err)
     }
   },
   components: {
