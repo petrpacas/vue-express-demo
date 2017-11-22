@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   port: process.env.DB_NAME || 8081,
   db: {
@@ -7,7 +9,7 @@ module.exports = {
     options: {
       dialect: process.env.DIALECT || 'sqlite',
       host: process.env.host || 'localhost',
-      storage: './tabtacker.sqlite'
+      storage: path.resolve(__dirname, '../../tabtacker.sqlite')
     }
   },
   authentication: {

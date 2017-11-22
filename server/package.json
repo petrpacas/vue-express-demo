@@ -1,11 +1,12 @@
-{
+ {
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "./node_modules/.bin/nodemon src/app.js --exec 'npm run lint && node'",
-    "lint": "./node_modules/.bin/eslint **/*.js"
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
+    "seed": "node ./seed"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",

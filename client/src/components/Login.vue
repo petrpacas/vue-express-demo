@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs6 offset-xs3>
+    <v-flex lg6 offset-lg3>
       <panel title="Login">
         <form name="tab-tracker-login">
           <v-text-field label="Email" v-model="email" />
@@ -15,7 +15,6 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-import Panel from '@/components/Panel'
 
 export default {
   data () {
@@ -34,13 +33,13 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>

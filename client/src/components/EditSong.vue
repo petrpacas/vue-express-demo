@@ -1,7 +1,7 @@
 <template>
-  <v-layout>
-    <v-flex xs6>
-      <panel title="Song Details" class="mr-2">
+  <v-layout wrap>
+    <v-flex xs12 md6>
+      <panel title="Song Details">
         <v-text-field label="Title" v-model="song.title" required :rules="[required]" />
         <v-text-field label="Artist" v-model="song.artist" required :rules="[required]" />
         <v-text-field label="Genre" v-model="song.genre" required :rules="[required]" />
@@ -10,8 +10,8 @@
         <v-text-field label="Youtube Id" v-model="song.youtubeId" required :rules="[required]" />
       </panel>
     </v-flex>
-    <v-flex xs6>
-      <panel title="Song Lyrics and Tab" class="ml-2">
+    <v-flex xs12 md6>
+      <panel title="Song Lyrics and Tab">
         <v-text-field multi-line label="Lyrics" v-model="song.lyrics" required :rules="[required]" />
         <v-text-field multi-line label="Tab" v-model="song.tab" required :rules="[required]" />
         <div class="errors" v-html="error"></div>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 
 export default {
@@ -64,9 +63,6 @@ export default {
     } catch (err) {
       console.log(err)
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>
